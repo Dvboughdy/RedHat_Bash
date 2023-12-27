@@ -347,14 +347,290 @@ Comando: `chown [usuarioAlQuePertenecerá] [archivo].`
 
 ![](https://i.postimg.cc/wMdfKkkW/imagen-2023-12-26-224646955.png)
 
-Resumen de Comandos (whoami, su, chmod, chown):
-Comando	Significado	Función
-whoami		Muestra usuario actual
-su	Switch User	Cambia de usuario
-chmod		Modifica permisos
-chown	Change Owner	Cambia propietario
-Ejercicio Práctico:
-ArchivoPoderoso.txt:
 
-Crear y asignar permisos r-x rwx r-x (modo simbólico).
-Imagen 1
+# Configuración de variables de entorno en la terminal
+Las variables de entorno **son herramientas cruciales para agilizar el trabajo y recordar información relevante en el entorno de Linux**, destacando el proceso de configuración y <u>**creación de links simbólicos**</u>, el <u>**manejo de variables de entorno preestablecidas**</u> y la personalización mediante la creación de <u>**alias**</u>.
+
+## ¿Cómo crear un link simbólico?
+Estos se caracterizan por ser apuntadores o accesos directos en la terminal.
+
+Comando: `ln -s <ruta> <Nombre>`.
+
+>[1NOTE]
+>
+> Se comparan con `alias`, **siendo más efectivos al considerarlos como directorios y acceder con `cd Acceso`**.
+> 
+> ![](https://i.postimg.cc/RFJBHS3n/imagen-2023-12-27-130941941.png)
+>
+> Se puede visualizar que tiene todos los permisos pero sin valor <u>**(Los links simbólicos como tal no tienen permisos)**</u>
+
+## Variables de Entorno en Linux
+
+Para llamara estar variables se hace uso de comandos como `echo $VARIABLE` para visualizar variables preestablecidas.
+
+Para contemplar todo el set de variables existentes basta con digitar el comando `printenv`
+
+Las variables mas conocidas son:
+
+![](https://i.postimg.cc/kXgzLMs3/imagen-2023-12-27-132220411.png)
+
+> [!IMPORTANT]
+> 
+> Todas las variables se invocan con un signo de pesos `$`. y ademas por convención, <u> **estas se crean con mayúsculas**</u> 
+>
+> ![](https://i.postimg.cc/mD46jTkn/imagen-2023-12-27-132325786.png)
+> 
+> ![](https://i.postimg.cc/tTzvm8V4/imagen-2023-12-27-132340234.png)
+
+## Configuración Personalizada de las variables `.bashrc` y `.zshrc`
+
+1. Ubicar el archivo `.bashrc` en el <u>**home del usuario**</u>, o por otro lado, en caso de tener como ejecutable **OhMyZsh**, el archivo corresponderia a `.zshrc`
+
+2. Visualizar con `ls -la` estos <u>**archivos privados**</u> y ejecutarlos con `code .bashrc` o por el contrario con el **editor interno de `vim`** mediante el comando:
+
+```bash
+ vim ~/.zshr 
+ vim ~/.bashrc
+```
+> [!CAUTION]
+> 
+> Cuando lo abras ten cuidado con lo que tocas, **podrías dañar la shell**, pero desde ahí puedes crear una variable de entorno
+
+**Ejemplo de creación de variable de entorno para ruta en WSL.**
+
+![](https://i.postimg.cc/k4yGgr4S/imagen-2023-12-27-145624028.png)
+> [!TIP]
+>
+> Luego de guarda los cambios, se debe reiniciar la terminal, pero en vez de cerrarla basta con introducir el comando
+> ```bash
+> source ~/.zshrc
+> source ~/.bashrc
+> ```
+y ya sera posible utilizar la nueva variable creada utilizando la sintaxis del comando mencionada.
+
+![](https://i.postimg.cc/d3H0G8Gt/imagen-2023-12-27-145635260.png)
+ O mediante el comando `echo $VARIABLE`
+
+## Creación de `alias`
+
+Los Alias son similares a los links simbolicos que actuan como directorios, pero en vez de declararse directamente como un archivo enlazado a un archivo especifico, se crean directamente en la configuración de la shell, la `bashrc` o `zshrc` similar a las variables
+
+**Ejemplo de creación de alias persistente.**
+
+![](https://i.postimg.cc/rpNRKRZz/imagen-2023-12-27-150709404.png)
+
+Ahora solo basta con escribir el alias creado `cc` y se abrira dicha ruta
+
+
+# Comandos de busqueda
+A veces necesitas localizar varios archivos del mismo tipo que ocupan espacio innecesario en tu disco duro.
+
+Por ejemplo, algunos programas que funcionan desde la consola, como `npm`, guardan sus errores en archivos de extensión **".log"** y si no estás pendiente de eliminarlos se van acumulando en tu disco duro.
+
+## Utilizando el comando de busqueda `find`
+Este comando es similar a `which`, `type` o `whereis` que muestran la ruta del archivo, pero con una <u>**serie de opciones para filtrar la busqueda y ser mas especifica y acertada**</u>
+
+Sintaxis: 
+- Para consultar en una ruta general solo se utiliza el ./
+```bash
+find ./ [ruta] [opciones]` 
+```
+- O basta con solo indicar el `.`
+
+## Búsqueda por Nombre `(-name)`
+
+Ejemplo donde se desea buscar desde el home de la terminal, todos los archivos con extensión `".png"` 
+
+**Sintaxis:** 
+```bash
+find . [ruta] -name [TipoDeArchivo] 
+```
+
+![](https://i.postimg.cc/C5gvbQjS/imagen-2023-12-27-152253423.png)
+
+> [!NOTE]
+> ### En el caso de WSL
+> Se indica la extensión y el wildcard entre comillas.
+>
+> ![](https://i.postimg.cc/7Yc2cTWT/imagen-2023-12-27-152553870.png)
+
+## Segmentación por Tipo `(-type)`
+
+También puedes segmentar por el tipo, si es un archivo o si es un directorio utilizando la opción `-type`, el cual acepta 
+
+- `f` para **archivos**
+- `d` para **directorios**
+- `l` para **enlaces simbólicos**.
+
+**Sintaxis:** 
+```bash
+find . [ruta] -type [Opción] -name [TipoDeArchivo] 
+```
+1. Ejemplo donde se buscan todos los archivos que comiencen con la letra **"f"**
+
+![](https://i.postimg.cc/vBNnsgZj/imagen-2023-12-27-153538882.png)
+
+2. A su vez permite el uso de más de una opción separada por comas
+
+![](https://i.postimg.cc/Yjcmv5gz/imagen-2023-12-27-153551620.png)
+
+   3. **EJEMPLO EN `WSL`**
+
+![](https://i.postimg.cc/MpfqPnCH/imagen-2023-12-27-154018523.png)
+
+## Segmentación por Tamaño `(-size)`
+Especificación de tamaño con unidad (`c`, `k`, `M`, `G`).
+
+**Ejemplos:**
+```bash
+find ./ -size 4k
+find ./ -size +4k
+find ./ -size -4k
+```
+
+## Búsqueda de Archivos Vacíos `(-empty`
+Si quisiera buscar todas las carpetas vacías, habría que escribir
+```bash
+find ./ -type d -empty
+```
+![](https://i.postimg.cc/PxJjDNQd/imagen-2023-12-27-154907947.png)
+
+## Limitar la Búsqueda `(-maxdepth)`o `(-mindepth)`
+Puede que no queramos buscar en absolutamente todas las carpetas del sistema, sino que queremos únicamente una parte. Para eso limitamos la profundidad de carpetas a la que el comando debe buscar, esto se hace con la opción `-maxdepth` o `-mindepth` seguido de la profundidad.
+
+**Ejemplos:**
+```bash
+find ./ -type d -maxdepth 2 
+find ./ -type d -mindepth 2
+```
+![](https://i.postimg.cc/PJcYHL2J/imagen-2023-12-27-155503080.png)
+
+> [!TIP]
+>
+> Si en la parte superior aparece un `warning` quiere decir que la forma en como esta estructurado el comando no es la correcta, por ello corrobora que este bien estructurado antes de lanzarlo, en este caso la forma correcta de escribir el comando es:
+>
+> ```bash
+> find ./ -mindepth 2 -type f,d -name"*.txt"
+> ```
+
+> [!TIP]
+>
+> Al ser una consulta con mayor peso en su salida, lo mas recomendable es ejecutarlo en una interfaz de navegación que en este caso la mas apropiada es `less`
+>
+
+## Consultas practicas para reforzar lo visto
+
+1. Generar una busqueda de` archivos y directorios` con formato `.txt` con una `profundidad maxima de 2` que ademas, se `redireccionen por salida` a un archivo llamado **"mistxtFiles"** y que al final `muestre un mensaje de exito`
+
+-  **Solución:** Este reto se puede lograr de la siguiente manera
+![](https://i.postimg.cc/MGTszBYb/imagen-2023-12-27-160823278.png)
+
+  - - Y para visualizar el contenido del archivo nuevo basta con verlo medainte `cat mistxtFiles`
+> [!WARNING]
+> 
+> **Revisar siempre que la sintaxis este escrita de forma correcta**
+
+2. Busca los archivos que tengan extensión ".pdf" con una profundidad mínima de 2. 
+
+-  **Solución:** En este caso solo fue posible con una profundidad maxima debido a la masiva cantidad de archivos incluso algunos con permisos denegados
+![](https://i.postimg.cc/nhc8QCkM/imagen-2023-12-27-161751843.png)
+![](https://i.postimg.cc/qvmPc4bw/imagen-2023-12-27-161804017.png)
+
+3. Busca todo lo que tenga una letra **"j"** que pese más de `1b`. Luego guarda la salida en un archivo llamado **"LosArchivosJ.txt"** y cuando termine de hacer todo eso imprime un mensaje que diga **"Comando terminado con éxito"**
+
+-  **Solución:** En este caso la **segmentación por tamaño** <u>se posiciona luego de indicar</u> el **nombre del archivo** de lo contrario la sintaxis estaria incorrecta y causaria una salida erronea
+![](https://i.postimg.cc/s24ZHHWT/imagen-2023-12-27-162421903.png)
+![](https://i.postimg.cc/tTmJ8K4N/imagen-2023-12-27-162452887.png)
+
+
+# Comando `grep`
+
+`grep` significa <u>**(Global Regular Expression Print)**</u>.
+
+Utiliza **expresiones regulares** para realizar búsquedas en archivos.
+
+**Sintaxis:** `grep [ExpresiónRegular] [archivoDondeBuscar]`
+
+## Uso de `grep` con opciones
+
+### Ignorar </u>Case Sensitive </u> `(-i)`
+Buscará independientemente de si la letra o palabra a consultar es mayúscula o minúscula.
+```bash
+grep -i Action movies.csv
+```
+### <u>Contar Ocurrencias</u> `(-c)`
+Saber cuántas veces se repite una palabra
+```bash
+grep -c Drama movies.csv # Mostrara el número de veces que se repite
+grep -ic Drama movies.csv # Mostrara el número de veces que se repite pero con case senstive
+```
+### <u>Excluir Expresión</u> `(-v)`
+Saber cuáles son los resultados que NO coinciden con la expresión regular
+bash
+```bash
+grep -cv Drama movies.csv # Mostrara el número de veces que no aparece la palabra
+```
+### <u>Limitar Búsqueda</u> `(-m)`
+Se puede limitar la búsqueda en líneas con la opción `-m` seguida del **número de líneas** que queremos encontrar.
+```bash
+grep -m 10 Fan movies.csv # Mostrara los 10 primeras líneas 
+grep -vim 10 towers movies.csv # Permite incorporar mas expresiones y obtener una salida mas precisa
+```
+## Utilidad del comando grep
+1. Buscar algún paquete en específico que tengas instalado:
+
+    ```powershell
+    dpkg --get-selections | grep nombreDelPaquete
+    # dpkg --get-selections te dirá todos tus paquetes instalados
+    # grep filtrará esa lista con el paquete que te interesa
+    ```
+
+2. Filtrar algún archivo en específico después de un `ls`:
+
+    ```bash
+    ls -al | grep myFile.txt
+
+    # ls te dará la lista de todos tus archivos
+    # grep filtrará todos y te mostrará únicamente el que deseas
+    ```
+
+3. Buscar algún contenido en específico dentro de algún archivo:
+
+    ```bash
+    cat unArchivoLargo.txt | grep "La línea que busco"
+
+    # cat Te listará todo el contenido de ese archivo
+    # grep te filtrará únicamente lo que quieres ver
+    ```
+
+4. Buscar una línea en específico en diferentes archivos por medio de un patrón:
+
+    ```bash
+    grep "string" archivo_*
+
+    # grep buscará la palabra "string" en todos los archivos que comienzen por "archivo_" y te los mostrará.
+    ```
+
+5. Buscar usando expresiones regulares
+
+    **Ejemplo:**Tienes un archivo llamado `test.txt` y adentro contiene la siguiente frase: **"Imagina que quieres buscar algo"**
+    Entonces, podemos usar grep así:
+    ```bash
+    grep "Imagina .* algo" test.txt
+    ```
+    grep buscará alguna coincidencia, la expresion .* indica que ahí dentro puede haber una o más letras, cualquier que sea, así que podrías leerla como: **Imagina <u>(cualquier cosa)</u> algo**.
+    Esto encontrará justo la frase que quieres:
+    ```bash
+    Imagina que quieres buscar algo
+    ```
+
+## Comando <u>World Count</u> `(wd)`
+Uso del comando wc para contar palabras, caracteres y líneas en un archivo.
+```bash
+wc [archivo] # Muestra palabras, caracteres y líneas del archivo
+wc -l [archivo]  # Número de líneas
+wc -w [archivo]  # Número de palabras
+wc -c [archivo]  # Número de caracteres
+```
+
+
