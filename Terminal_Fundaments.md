@@ -123,7 +123,6 @@ cd /
 
 ## Atajos de Teclado para la Terminal
 - **CTRL-C:** Termina el proceso de un comando en la terminal.
-
 - **CTRL-D:** Termina la entrada de un comando.
 - **CTRL-A:** Avanza al inicio de la línea.
 - **CTRL-E:** Avanza al final de la línea.
@@ -264,7 +263,7 @@ Las wildcards o comodines son caracteres especiales que permiten buscar patrones
 ![Uso de las wildcards en la terminal](https://i.postimg.cc/cHxRNjCP/imagen-2023-12-25-143453355.png)
 
 ## Tipos de Wildcards
-### Buscar todo **(*)**
+### Buscar todo (*)
 - `ls -l *.png`: Busca archivos con extensión "**.png**".
 - `ls -l fotoDe*`: Busca archivos que comiencen por "**fotoDe**".
 
@@ -285,7 +284,7 @@ Las wildcards o comodines son caracteres especiales que permiten buscar patrones
 - `ls -d [[:lower:]]*`: Coincide con cualquier letra minúscula.
 - `ls -d [[:upper:]]*`: Coincide con cualquier letra mayúscula.
 
-## Uso de las Wildcards como Prefijos y Postfijos
+## Uso de las Wildcards como <u>Prefijos</u> y <u>Postfijos</u>
 ```bash
 # prefijo
 dir *.mp3

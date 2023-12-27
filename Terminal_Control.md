@@ -261,8 +261,100 @@ Ejemplo:
 | Octtal      | 6     | 3     | 0     |
 
 
-### Control de los permisos 
+# Modificando permisos desde la terminal
+
+## ¿Cómo Cambiar Permisos con `chmod`?
+
+### Operadores de asignación o denegación de permisos 
+Principalmente se deben tener en cuenta estos operadores
 - **+ (`Agrega un permiso`)**.
 - **- (`Elimina un permiso`)**.
 - **= (`Asigna permisos específicos`)**.
+
+### Forma Simbólica:
+Hay que escribir después del comando `chmod` el **símbolo del usuario**, luego el **operador** y por último **el permiso** que quieres **agregar** o **quitar**.
+
+Comando: `chmod [usuario][operador][permiso] [archivo]`.
+
+Ejemplo: 
+```bash
+chmod g+w ProyectoExplosivo.txt (agrega permisos de escritura al grupo).
+```
+
+### Forma Octal:
+
+Representa permisos con números (0-7).
+
+Ejemplo: 
+```bash
+chmod 755 archivo (permisos rwx r-x r-x).
+```
+## Observaciones sobre `chmod`
+- **Permite Varios cambios simultáneos**: `chmod go+wx [archivo].`
+
+![](https://i.postimg.cc/KcsmtkJ1/imagen-2023-12-26-222811191.png)
+- **Permiso específico por usuario mediante el operador de `=`**: `chmod u+r,g=w [archivo].`
+
+![](https://i.postimg.cc/pXhRCW6q/imagen-2023-12-26-222823464.png)
+- **Quitar todos los permisos de la forma simbolica**
+
+![](https://i.postimg.cc/xT95K5TR/imagen-2023-12-26-225955100.png)
+
+
+- **Forma octal para permisos**: `chmod 755`.
+
+![](https://i.postimg.cc/dtrtvQjD/imagen-2023-12-26-223124085.png)
+
+>[!TIP]
+>
+> **Se pueden crear y editar archivos al instante usando el operador `>` y basta con finalizar la operación con `CTRL+D`**
+> 
+> ![](https://i.postimg.cc/dt0dsxVz/imagen-2023-12-26-230213347.png)
+
+## Gestión de Usuarios con `whoami` y `su`:
+Cuando listamos los archivos con `ls -l` la **`tercera columna` <u>muestra el nombre del usuario que es propietario del archivo</u>** y la **`cuarta columna` <u>muestra el grupo que tiene control sobre el archivo.</u>**
+
+![](https://i.postimg.cc/yYkcTRKt/imagen-2023-12-26-223444184.png)
+
+Para el ejemplo, aparece **"miguelangel"** en ambas columnas porque <u>ese es el usuario que estamos usando y porque el grupo al que pertenece el usuario se llama igual</u> **"miguelangel"**.
+
+- **`whoami`**: Muestra el usuario actual.
+
+- **`su` (Switch User)**: Cambia al usuario especificado.
+
+Ejemplo:
+```bash
+su root (cambia al superusuario) # Al estar en el superusuario se  solicitara la contraseña de acceso a este.
+```
+>[!TIP]
+>
+> ### ¿Qué hacer en caso de olvidar una contraseña?
+> 
+> Si estás usando Windows Subsystem for Linux (wsl) y se te olvidó la contraseña del root. Sigue estos pasos:
+> 
+>- Abre el cmd de windows y ejecuta este comando `wsl --user root`. Esto hará que se inicie en la terminal wsl con el usuario root.
+>
+> - Luego ejecuta el comando `passwd root` el cual te permitirá cambiar la contraseña del usuario root.
+> 
+> Ya con esto puedes volver a la terminal de wsl y volver a ejecutar el comando `su root`.
+
+## Cambio de Propietario con `chown`:
+- **`chown`(Change Owner)**
   
+Cambia el propietario de un archivo.
+
+Comando: `chown [usuarioAlQuePertenecerá] [archivo].`
+
+![](https://i.postimg.cc/wMdfKkkW/imagen-2023-12-26-224646955.png)
+
+Resumen de Comandos (whoami, su, chmod, chown):
+Comando	Significado	Función
+whoami		Muestra usuario actual
+su	Switch User	Cambia de usuario
+chmod		Modifica permisos
+chown	Change Owner	Cambia propietario
+Ejercicio Práctico:
+ArchivoPoderoso.txt:
+
+Crear y asignar permisos r-x rwx r-x (modo simbólico).
+Imagen 1
