@@ -226,7 +226,7 @@ Ejemplo (WSL):
 ```bash
 explorer.exe .: # Abre la carpeta actual en el explorador de archivos desde WSL.
 ```
-### Alternativa a las anteriores opciones con wslview
+### Alternativa a las anteriores opciones con **wslview**
 Tambien se puede usar los comandos
 - `wslview ejemplo.tipoArchivo` ( abrir un archivo )
 - `wslview nombreDirectorio` ( abrir un directorio )
