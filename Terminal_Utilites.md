@@ -110,7 +110,7 @@ Este es una versión extendida del formato tradicional de compresión ".zip" que
 ![](https://i.postimg.cc/J0LD5wbn/imagen-2024-02-07-230057383.png)
 
 
-### 1.4 Ver el contenido del archivo comprimido.tar sin necesidad de descomprimirlo
+### 1.4 Ver el contenido del archivo comprimido `.tar` sin necesidad de descomprimirlo
 
 Para ver el contenido de un archivo `.tar` sin necesidad de descomprimirlo, se puede ejecutar el comando:
 ```bash
@@ -162,3 +162,125 @@ unrar l mi_archivo.rar
 # Ejemplo
 unrar x compressed.zip
 ```
+
+
+
+# Topic 3: Manejo de procesos en la terminal 
+
+## 1. Ver los procesos activos en la terminal (`ps`)
+El comando `ps` muestra una tabla sencilla de entender con los procesos activos, donde la primera columna representa el process ID (`PID`) y la última columna el nombre del proceso (`CMD`).
+
+## 2. Ver procesos más detallados (`top`)
+Para obtener una lista más detallada de los procesos, incluyendo su consumo de **CPU** y **RAM**, así como el usuario que lo inició en tiempo real, utilizamos el comando `top`. Además, podemos filtrar por usuario presionando "`u`" y acceder a la ayuda presionando "`h`". Para salir, presionamos "`q`".
+
+## 3. Ver procesos más detallados (`htop`)
+El comando `htop` ofrece una interfaz más intuitiva y amigable para evaluar los procesos del administrador de tareas. Funciona de manera similar a `top` con los shortcuts mencionados.
+
+![](https://i.postimg.cc/xdNmXn1c/imagen-2024-02-08-181451444.png)
+
+## 4. Matar un proceso (`kill`) o (`pkill`)
+Para finalizar un proceso, utilizamos el comando `kill` seguido del (`PID`) del proceso que queremos terminar. 
+
+> [!NOTE]
+> 
+> En sistemas Windows, podemos usar la terminal para cerrar aplicaciones, pero en **WSL** solo podemos acceder a los procesos ejecutados en la terminal.
+
+- **Ejemplo de eliminación de un proceso**
+![](https://i.postimg.cc/4dzh1PtG/imagen-2024-02-08-181527486.png)
+
+En este caso si ejecuto el comando `kill -595` voy a cerrar la terminal.
+
+- Por otro lado se puede forzar la terminación de un proceso utilizando la señal **"-9"** con `kill -9 PID` o `killall -9 PID/NAME` que terminara con el proceso de forma inmediata.
+
+
+### 4.1 Dato importante de `kill -9` o `killall -9`
+> [!CAUTION]
+> La señal `-9` envía una señal **SIGKILL** indicando al servicio que se cierre de inmediato. **Aunque es efectivo para terminar procesos rebeldes, debe usarse con precaución**, ya que omite el proceso de apagado estándar y puede resultar en la pérdida de datos no guardados.
+
+### 4.2 Opción alternativa con `pkill`:
+El comando 
+```bash
+`pkill -name`
+ pkill -9 PNAME o CMD
+```
+Terminara un proceso especificando el nombre del proceso que se desea eliminar.
+
+### 4.3 Dato importante de `kill` en htop:**
+> [!IMPORTANT]
+> 
+> En htop, al solicitar `kill` de un proceso con `F9`, dice en la parte inferior **enter** | **send** || **Esc** | **Cancel**, y al mover las teclas hacia arriba y abajo permite seleccionar que señal de terminación enviar… puede presionarse directamente el numero de la señal y luego enter o buscar con las flechas. Detalles pqueños de los Sistemas Operativos (Windows es PEOR en cierto modo, aunque powershell soluciona mucho, y tiene una opción o ‘flag’ para forzar cierre).
+
+
+
+# Topic 4: Procesos en foreground y background
+
+## 1. Proceso en "Foreground"
+- Un proceso que se muestra activamente en la terminal se considera en foreground. 
+- **Ejemplo**
+  
+  Cuando escribimos un texto usando 
+  ```bash
+  cat > mi_nota.txt`
+  ```
+  la terminal espera nuestra entrada.
+
+## 1.1 Suspensión de Proceso y enviarlo a Background
+Podemos escribir algo y después terminar el input del texto con **CTRL + D**, pero en esta ocasión no haremos eso. 
+
+- Lo que queremos hacer será suspender el proceso, esto lo podemos hacer con **CTRL + Z**. El resultado que nos mostrará la terminal deberá ser uno donde nos indique la suspensión del comando `cat` moviendo este proceso detenido al **background**.
+
+## 2. Acceso a los procesos detenidos en el "Background" con `jobs`
+
+Utilizamos el comando `jobs` para ver los procesos en background y su número de trabajo.
+
+## 2.1 Traer procesos del "back" al "foreground" con `fg` 
+- Para traer un proceso de background al foreground, usamos el comando `fg ` seguido del número de trabajo del proceso.
+- **Ejemplo**
+```bash
+fg 1`
+```
+- En ZSH, el formato sería `fg %1` debido a la interpretación de las wildcards.
+  
+  Una vez enviado al foreground veremos como se activa la ejecución del comando en la terminal y podremos seguir escribiendo nuestra nota. Recuerda que una vez terminemos de escribir presionamos **CTRL + D** para terminar el input y guardar.
+
+Cuando se guarda el proceso de `cat`, el proceso por fin termina y si se usa `jobs` no mostrará ningún trabajo en **background**.
+
+
+## 3. Otras Formas de Enviar al Background
+### 3.1 Agregar el operador de control `&` al final de un comando 
+Este operador enviara el proceso directamente al **background**.
+- **Ejemplo**
+```bash
+cat > mi_nota.txt &
+```
+
+### 3.2 Utilizar el comando `bg`
+Este sirve de manera similar que `fg` solo que en vez de traerlo al **foreground** este lleva un trabajo al **background**
+
+- **Ejemplo**
+```bash
+bg 1
+```
+
+### 3.2.1 Ejemplo Práctico de como usar el comando `bg`
+
+Al abrir un programa de interfaz gráfica desde la terminal, como Google Chrome 
+```
+google-chrome-stable
+```
+Este se ejecuta pero no deja hacer ninguna otra tarea ya que la ventana del navegador está abierta:
+
+- Para ello se puede suspender el proceso con `CTRL+Z` y al revisar con jobs lo mostrara en pausa con el numero de trabajo correspondiente en este caso [1].
+  
+  ![](https://i.postimg.cc/bYK8HPgQ/imagen-2024-02-08-184621290.png)
+
+
+- Para poder correr nuevamente el navegador y a su vez seguir trabajando en la terminal se debe reactivar el proceso usando 
+```bash
+bg 1`
+```
+moviendolo  al background y continuar trabajando en la terminal mientras el programa se ejecuta en segundo plano.
+
+![](https://i.postimg.cc/fTms8Pq1/imagen-2024-02-08-184649101.png)
+
+> [!NOTE] Este conocimiento es útil cuando necesitamos ejecutar varios comandos en paralelo con una sola terminal. Con estos métodos, podemos gestionar eficazmente los procesos según nuestras necesidades.
