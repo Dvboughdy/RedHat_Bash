@@ -50,7 +50,7 @@ ls -lh
 
 **ls -al:** Combina las opciones -a y -l para mostrar información detallada de todos los archivos, incluyendo los ocultos.
 
-### Funciones Adicionales del Comando `ls`
+### 3.1 Funciones Adicionales del Comando `ls`
 El comando ls es fundamental para explorar el contenido de directorios. Aquí se detallan algunas funciones adicionales y opciones útiles:
 
 - **ls -a:** Lista todos los archivos, incluyendo los ocultos que comienzan con punto (.).
@@ -65,7 +65,7 @@ El comando ls es fundamental para explorar el contenido de directorios. Aquí se
 - **ls -x:** Presenta los archivos en columnas.
 - **ls -i:** Precede la salida con el número de i-node.
 
-### Ejemplos:
+### 3.2 Ejemplos del comando `ls`:
 - **ls -lt:** Muestra los archivos del más actual al más antiguo.
 - **ls -ltr:** Muestra los archivos del más antiguo al más actual.
 - **ls -lh:** Muestra el tamaño de los archivos de forma legible.
@@ -89,19 +89,19 @@ La virgulilla (~) representa la carpeta del usuario en el directorio Home. Para 
 cd ~
 ```
 
-## Punto y Doble Punto (`.`) (`..`)
+## 1. Punto y Doble Punto (`.`) (`..`)
 - **cd ..** Retrocede a la carpeta anterior.
 - **cd ./miguelangel/Documents/:** Accede a una ruta más precisa.
 
-## Volver al Raíz Directamente con cd ../..
+## 2. Volver al Raíz Directamente con` cd ../..`
 Para volver directamente a la raíz del sistema en un solo atajo:
 ```bash
 cd ../..
 ```
 
-## Retornar a una Dirección Previa con `pwd` y `cd`
+## 3. Retornar a una Dirección Previa con `pwd` y `cd`
 
-### Primer modo:
+### 3.1 Primer modo:
 Al ver la ruta actual con `pwd`, como por ejemplo:
 
 ```bash
@@ -112,18 +112,18 @@ Se puede regresar al Home o a otra carpeta anterior utilizando cd seguido de la 
 cd .nvm/.git
 ```
 
-### Segundo modo:
+### 3.2 Segundo modo:
 Retornar a una Dirección Previa con el Comando cd ~
 El comando **cd -** permite regresar a la ruta previa en la que se estaba.
 
-## Slash (`/`)
+## 4. Slash (`/`)
 El atajo slash (/) lleva directamente a la raíz donde se encuentran todas las carpetas del sistema operativo:
 
 ```bash
 cd /
 ```
 
-## Atajos de Teclado para la Terminal
+## 5. Atajos de Teclado para la Terminal
 - **CTRL-C:** Termina el proceso de un comando en la terminal.
 
 - **CTRL-D:** Termina la entrada de un comando.
@@ -177,7 +177,7 @@ rm [nombreDelArchivoParaEliminar]: # Elimina el archivo especificado.
 rm -r SecretoQueNadieDebeVer # Eliminar directorio con el flag -r
 ```
 
-Opciones útiles de **rm**
+### 6.1 Opciones útiles de `rm`
 - `-i` (de interactive) te pregunta si estás seguro de eliminar el archivo
 - `-r` (de recursive) elimina todo lo que esté dentro de una carpeta
 - `-f` (de force) fuerza a borrar todo.
@@ -210,19 +210,19 @@ Usa las flechas y el scroll para moverte.
 - Presiona **"q"** para salir de la interfaz.
 
 ## 3. Apertura en Programa Predeterminado con `xdg-open` o `code .` en (WSL)
-- **xdg-open [archivoParaAbrir]**:  Abre el archivo en el programa predeterminado.
-- **code [nombreDelArchivo] (WSL)**: Abre un archivo en Visual Studio Code.
+- `xdg-open [archivoParaAbrir]`:  Abre el archivo en el programa predeterminado.
+- `code [nombreDelArchivo]`**(WSL)**: Abre un archivo en Visual Studio Code.
 
-### Instalación de Dependencia (si es necesario):
+### 3.1 Instalación de Dependencia (si es necesario):
 ```bash
 sudo apt install xdg-utils
 ```
-Ejemplo con xdg:
+- **Ejemplo con xdg**:
 ```bash
 xdg-open ejemplo.html: # Abre "ejemplo.html" en el programa predeterminado.
 ```
 
-Ejemplo con code en (WSL):
+- **Ejemplo con code en (WSL)**:
 ```bash
 code ejemplo.html . # Abre "ejemplo.html" en Visual Studio Code desde WSL.
 ```
@@ -240,7 +240,7 @@ nautilus CarpetaImportante # Abre la carpeta "CarpetaImportante" en Nautilus.
 ```bash
 explorer.exe .: # Abre la carpeta actual en el explorador de archivos desde WSL.
 ```
-### 5. Alternativa a las anteriores opciones con **`wslview`**
+## 5. Alternativa a las anteriores opciones con **`wslview`**
 Tambien se puede usar los comandos
 - `wslview ejemplo.tipoArchivo` ( abrir un archivo )
 - `wslview nombreDirectorio` ( abrir un directorio )
