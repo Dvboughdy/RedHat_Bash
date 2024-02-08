@@ -1,4 +1,4 @@
-# Redirecciones en la terminal
+# Topic 1: Redirecciones en la terminal
 
 ## ¿Qué son las entradas y salidas de la terminal?
 Entradas y salidas: Se refieren al flujo de datos generado al interactuar con comandos en la terminal.
@@ -54,22 +54,23 @@ ls -l > output.txt 2>&1.
 ## Redireccionamiento de Entrada o `Standard Input` usando `(<)`
 ###  Alimentar un Comando desde un Archivo: 
 Usa `<` para proporcionar entrada desde un archivo. 
-Ejemplo: 
+- Ejemplo: 
 ```bash
 sort < lista_de_servidores.txt
 uniq < lista_ips.txt
 ```
 
 ### Redirección de `stdin` y `stdout` en el mismo comando: 
-Combina `<` y `>`. 
-Ejemplo:
+Combina `<` y `>`.
+- Ejemplo:
+
 ```bash
 sort < lista_desordenada.txt > lista_ordenada.txt.
 ```
 ![](https://i.postimg.cc/TYR7CpS6/imagen-2023-12-26-205759467.png)
 
 
-# Redirecciones con Pipe Operators en la Terminal
+# Topic 2: Redirecciones con Pipe Operators en la Terminal
 
 ## Pipe Operator
 Es un operador que permite tomar la salida de un comando y usarla como entrada para otro comando.
@@ -146,7 +147,7 @@ sudo apt-get install lolcat
 ```
 
 
-# Encadenando comandos: Operadores de control
+# Topic 3: Encadenando comandos: Operadores de control
 
 Los operadores de control son símbolos reservados por la terminal que facilitan el encadenamiento de comandos.
 
@@ -170,6 +171,8 @@ date & echo "Hola" & cal
 - En la salida podemos ver que en la primera línea dice `[1] 349` y en la tercera dice `[2] 350`, esto significa que se crearon dos hilos para ejecutar los 3 comandos que se le dieron.
 - 
 - El primero, con el id 349, se usó para ejecutar el comando `date` y el segundo, con el id 350 se usó para ejecutar los comandos `echo` y `cal`.
+
+
 ## Comandos con condicionales
 
 ### Condición and (`&&`)
@@ -215,7 +218,7 @@ Se presentan otras funcionalidades de los operadores de control, como el operado
 ## Operadores de control con Pipe Operators
 ![](https://i.postimg.cc/LXjSBnWP/imagen-2023-12-26-211009127.png)
 
-# Manejo de permisos
+# Topic 4: Manejo de permisos
 Los permisos en un sistema operativo definen las acciones que cada usuario puede realizar sobre archivos y carpetas. Al utilizar el comando ls -l, la primera columna que aparece representa estos permisos.
 
 ## Tipos de archivos:
@@ -251,8 +254,12 @@ Cada conjunto de permisos se representa con un número octal (0-7), donde:
 ### Modo simbólico de los permisos
 ![](https://i.postimg.cc/8zvZCMfL/imagen-2023-12-26-211358872.pngg)
 
-Ejemplo:
-> De un directorio `d`, el *owner* tiene permiso de **read** y **write**, el *group* tiene permisos de **write** y **execute** y *world* **no tiene permisos**.
+> - Ejemplo:
+> 
+> De un directorio `d`, 
+> - El *owner* tiene permiso de **read** y **write**
+> - El *group* tiene permisos de **write** y **execute**
+> - El *world* **no tiene permisos**.
 
 | Type file | Owner | Group | World |
 | ------------ | ------------ | ------------ | ------------ |
@@ -261,7 +268,7 @@ Ejemplo:
 | Octtal      | 6     | 3     | 0     |
 
 
-# Modificando permisos desde la terminal
+# Topic 5: Modificando permisos desde la terminal
 
 ## ¿Cómo Cambiar Permisos con `chmod`?
 
@@ -271,35 +278,45 @@ Principalmente se deben tener en cuenta estos operadores
 - **- (`Elimina un permiso`)**.
 - **= (`Asigna permisos específicos`)**.
 
-### Forma Simbólica:
+### 1. Forma Simbólica:
 Hay que escribir después del comando `chmod` el **símbolo del usuario**, luego el **operador** y por último **el permiso** que quieres **agregar** o **quitar**.
 
-Comando: `chmod [usuario][operador][permiso] [archivo]`.
+**Comando:** 
+```bash
+chmod [usuario][operador][permiso] [archivo].
+```
 
 Ejemplo: 
 ```bash
-chmod g+w ProyectoExplosivo.txt (agrega permisos de escritura al grupo).
+chmod g+w ProyectoExplosivo.txt # Agrega permisos de escritura al grupo.
 ```
 
-### Forma Octal:
-
-Representa permisos con números (0-7).
-
-Ejemplo: 
+## Observaciones y ejemplos sobre `chmod`
+1. **Permite Varios cambios simultáneos**: 
 ```bash
-chmod 755 archivo (permisos rwx r-x r-x).
+chmod go+wx [archivo].
 ```
-## Observaciones sobre `chmod`
-- **Permite Varios cambios simultáneos**: `chmod go+wx [archivo].`
 
 ![](https://i.postimg.cc/KcsmtkJ1/imagen-2023-12-26-222811191.png)
-- **Permiso específico por usuario mediante el operador de `=`**: `chmod u+r,g=w [archivo].`
+2. **Permiso específico por usuario mediante el operador de `=`**
+```bash
+chmod u+r,g=w [archivo].`
+```
 
 ![](https://i.postimg.cc/pXhRCW6q/imagen-2023-12-26-222823464.png)
-- **Quitar todos los permisos de la forma simbolica**
+3. **Quitar todos los permisos de la forma simbolica**
 
 ![](https://i.postimg.cc/xT95K5TR/imagen-2023-12-26-225955100.png)
 
+
+### 2. Forma Octal:
+
+Representa permisos con números (0-7).
+
+- Ejemplo: 
+```bash
+chmod 755 archivo # Permisos rwx r-x r-x.
+```
 
 - **Forma octal para permisos**: `chmod 755`.
 
@@ -348,15 +365,18 @@ Comando: `chown [usuarioAlQuePertenecerá] [archivo].`
 ![](https://i.postimg.cc/wMdfKkkW/imagen-2023-12-26-224646955.png)
 
 
-# Configuración de variables de entorno en la terminal
+# Topic 6: Configuración de variables de entorno en la terminal
 Las variables de entorno **son herramientas cruciales para agilizar el trabajo y recordar información relevante en el entorno de Linux**, destacando el proceso de configuración y <u>**creación de links simbólicos**</u>, el <u>**manejo de variables de entorno preestablecidas**</u> y la personalización mediante la creación de <u>**alias**</u>.
 
-## ¿Cómo crear un link simbólico?
+## 1. ¿Cómo crear un link simbólico?
 Estos se caracterizan por ser apuntadores o accesos directos en la terminal.
 
-Comando: `ln -s <ruta> <Nombre>`.
+Comando: 
+```bash
+ln -s <ruta> <Nombre>.
+```
 
->[1NOTE]
+>[!NOTE]
 >
 > Se comparan con `alias`, **siendo más efectivos al considerarlos como directorios y acceder con `cd Acceso`**.
 > 
@@ -364,7 +384,7 @@ Comando: `ln -s <ruta> <Nombre>`.
 >
 > Se puede visualizar que tiene todos los permisos pero sin valor <u>**(Los links simbólicos como tal no tienen permisos)**</u>
 
-## Variables de Entorno en Linux
+## 2. Variables de Entorno en Linux
 
 Para llamara estar variables se hace uso de comandos como `echo $VARIABLE` para visualizar variables preestablecidas.
 
@@ -411,7 +431,7 @@ y ya sera posible utilizar la nueva variable creada utilizando la sintaxis del c
 ![](https://i.postimg.cc/d3H0G8Gt/imagen-2023-12-27-145635260.png)
  O mediante el comando `echo $VARIABLE`
 
-## Creación de `alias`
+## 3. Creación de `alias`
 
 Los Alias son similares a los links simbolicos que actuan como directorios, pero en vez de declararse directamente como un archivo enlazado a un archivo especifico, se crean directamente en la configuración de la shell, la `bashrc` o `zshrc` similar a las variables
 
@@ -422,22 +442,25 @@ Los Alias son similares a los links simbolicos que actuan como directorios, pero
 Ahora solo basta con escribir el alias creado `cc` y se abrira dicha ruta
 
 
-# Comandos de busqueda
+# Topic 7: Comandos de busqueda
 A veces necesitas localizar varios archivos del mismo tipo que ocupan espacio innecesario en tu disco duro.
 
 Por ejemplo, algunos programas que funcionan desde la consola, como `npm`, guardan sus errores en archivos de extensión **".log"** y si no estás pendiente de eliminarlos se van acumulando en tu disco duro.
 
 ## Utilizando el comando de busqueda `find`
-Este comando es similar a `which`, `type` o `whereis` que muestran la ruta del archivo, pero con una <u>**serie de opciones para filtrar la busqueda y ser mas especifica y acertada**</u>
+Este comando es similar a `which`, `type` o `whereis` que muestran la ruta del archivo, pero con una **serie de opciones para filtrar la busqueda y ser mas especifica y acertada** 
+![](https://i.postimg.cc/QNyQpc1R/imagen-2024-02-07-212757430.png)
 
-Sintaxis: 
+**Sintaxis:** 
 - Para consultar en una ruta general solo se utiliza el ./
 ```bash
 find ./ [ruta] [opciones]` 
 ```
 - O basta con solo indicar el `.`
-
-## Búsqueda por Nombre `(-name)`
+```bash
+find . [ruta] [opciones]` 
+```
+### 1. Búsqueda por Nombre `(-name)`
 
 Ejemplo donde se desea buscar desde el home de la terminal, todos los archivos con extensión `".png"` 
 
@@ -454,7 +477,7 @@ find . [ruta] -name [TipoDeArchivo]
 >
 > ![](https://i.postimg.cc/7Yc2cTWT/imagen-2023-12-27-152553870.png)
 
-## Segmentación por Tipo `(-type)`
+### 2. Segmentación por Tipo `(-type)`
 
 También puedes segmentar por el tipo, si es un archivo o si es un directorio utilizando la opción `-type`, el cual acepta 
 
@@ -474,11 +497,11 @@ find . [ruta] -type [Opción] -name [TipoDeArchivo]
 
 ![](https://i.postimg.cc/Yjcmv5gz/imagen-2023-12-27-153551620.png)
 
-   3. **EJEMPLO EN `WSL`**
+3. **EJEMPLO EN `WSL`**
 
 ![](https://i.postimg.cc/MpfqPnCH/imagen-2023-12-27-154018523.png)
 
-## Segmentación por Tamaño `(-size)`
+### 3. Segmentación por Tamaño `(-size)`
 Especificación de tamaño con unidad (`c`, `k`, `M`, `G`).
 
 **Ejemplos:**
@@ -488,14 +511,14 @@ find ./ -size +4k
 find ./ -size -4k
 ```
 
-## Búsqueda de Archivos Vacíos `(-empty`
+### 4. Búsqueda de Archivos Vacíos `(-empty`
 Si quisiera buscar todas las carpetas vacías, habría que escribir
 ```bash
 find ./ -type d -empty
 ```
 ![](https://i.postimg.cc/PxJjDNQd/imagen-2023-12-27-154907947.png)
 
-## Limitar la Búsqueda `(-maxdepth)`o `(-mindepth)`
+### 5. Limitar la Búsqueda `(-maxdepth)`o `(-mindepth)`
 Puede que no queramos buscar en absolutamente todas las carpetas del sistema, sino que queremos únicamente una parte. Para eso limitamos la profundidad de carpetas a la que el comando debe buscar, esto se hace con la opción `-maxdepth` o `-mindepth` seguido de la profundidad.
 
 **Ejemplos:**
@@ -518,65 +541,69 @@ find ./ -type d -mindepth 2
 > Al ser una consulta con mayor peso en su salida, lo mas recomendable es ejecutarlo en una interfaz de navegación que en este caso la mas apropiada es `less`
 >
 
-## Consultas practicas para reforzar lo visto
+### Consultas practicas para reforzar lo visto
 
 1. Generar una busqueda de` archivos y directorios` con formato `.txt` con una `profundidad maxima de 2` que ademas, se `redireccionen por salida` a un archivo llamado **"mistxtFiles"** y que al final `muestre un mensaje de exito`
 
 -  **Solución:** Este reto se puede lograr de la siguiente manera
 ![](https://i.postimg.cc/MGTszBYb/imagen-2023-12-27-160823278.png)
 
-  - - Y para visualizar el contenido del archivo nuevo basta con verlo medainte `cat mistxtFiles`
+  - - Y para visualizar el contenido del archivo nuevo basta con verlo mediante 
+```bash
+cat mistxtFiles
+```
 > [!WARNING]
 > 
 > **Revisar siempre que la sintaxis este escrita de forma correcta**
 
-2. Busca los archivos que tengan extensión ".pdf" con una profundidad mínima de 2. 
+2. Busca los archivos que tengan extensión "`.pdf`" con una `profundidad mínima de 2`. 
 
 -  **Solución:** En este caso solo fue posible con una profundidad maxima debido a la masiva cantidad de archivos incluso algunos con permisos denegados
 ![](https://i.postimg.cc/nhc8QCkM/imagen-2023-12-27-161751843.png)
 ![](https://i.postimg.cc/qvmPc4bw/imagen-2023-12-27-161804017.png)
 
-3. Busca todo lo que tenga una letra **"j"** que pese más de `1b`. Luego guarda la salida en un archivo llamado **"LosArchivosJ.txt"** y cuando termine de hacer todo eso imprime un mensaje que diga **"Comando terminado con éxito"**
+3. Busca todo lo que tenga una letra "`j`" `que pese más de 1b`. Luego guarda la salida en un archivo llamado **"`LosArchivosJ.txt`"** y cuando termine de hacer todo eso imprime un mensaje que diga **"`Comando terminado con éxito`"**
 
 -  **Solución:** En este caso la **segmentación por tamaño** <u>se posiciona luego de indicar</u> el **nombre del archivo** de lo contrario la sintaxis estaria incorrecta y causaria una salida erronea
 ![](https://i.postimg.cc/s24ZHHWT/imagen-2023-12-27-162421903.png)
 ![](https://i.postimg.cc/tTmJ8K4N/imagen-2023-12-27-162452887.png)
 
 
-# Comando `grep`
-
-`grep` significa <u>**(Global Regular Expression Print)**</u>.
+# Topic 8: Comando `grep` (Global Regular Expression Print) y `wc`
 
 Utiliza **expresiones regulares** para realizar búsquedas en archivos.
 
-**Sintaxis:** `grep [ExpresiónRegular] [archivoDondeBuscar]`
+**Sintaxis:** 
+```bash
+grep [ExpresiónRegular] [archivoDondeBuscar]`
+```
 
 ## Uso de `grep` con opciones
 
-### Ignorar </u>Case Sensitive </u> `(-i)`
+### 1. Ignorar `Case Sensitive` con `(-i)`
 Buscará independientemente de si la letra o palabra a consultar es mayúscula o minúscula.
 ```bash
 grep -i Action movies.csv
 ```
-### <u>Contar Ocurrencias</u> `(-c)`
+### 2. Contar Ocurrencias `(-c)`
 Saber cuántas veces se repite una palabra
 ```bash
 grep -c Drama movies.csv # Mostrara el número de veces que se repite
 grep -ic Drama movies.csv # Mostrara el número de veces que se repite pero con case senstive
 ```
-### <u>Excluir Expresión</u> `(-v)`
+### 3. Excluir Expresión `(-v)`
 Saber cuáles son los resultados que NO coinciden con la expresión regular
 bash
 ```bash
 grep -cv Drama movies.csv # Mostrara el número de veces que no aparece la palabra
 ```
-### <u>Limitar Búsqueda</u> `(-m)`
+### 4. Limitar Búsqueda `(-m)`
 Se puede limitar la búsqueda en líneas con la opción `-m` seguida del **número de líneas** que queremos encontrar.
 ```bash
 grep -m 10 Fan movies.csv # Mostrara los 10 primeras líneas 
 grep -vim 10 towers movies.csv # Permite incorporar mas expresiones y obtener una salida mas precisa
 ```
-## Utilidad del comando grep
+### UTILIDAD DEL COMANDO `grep`
 1. Buscar algún paquete en específico que tengas instalado:
 
     ```powershell
@@ -599,7 +626,7 @@ grep -vim 10 towers movies.csv # Permite incorporar mas expresiones y obtener un
     ```bash
     cat unArchivoLargo.txt | grep "La línea que busco"
 
-    # cat Te listará todo el contenido de ese archivo
+    # cat te mostrara todo el contenido de ese archivo
     # grep te filtrará únicamente lo que quieres ver
     ```
 
@@ -624,10 +651,14 @@ grep -vim 10 towers movies.csv # Permite incorporar mas expresiones y obtener un
     Imagina que quieres buscar algo
     ```
 
-## Comando <u>World Count</u> `(wd)`
+## Comando World Count `(wd)`
 Uso del comando wc para contar palabras, caracteres y líneas en un archivo.
 ```bash
 wc [archivo] # Muestra palabras, caracteres y líneas del archivo
+```
+![](https://i.postimg.cc/FF8rbKRP/imagen-2024-02-07-210737924.png)
+
+```bash
 wc -l [archivo]  # Número de líneas
 wc -w [archivo]  # Número de palabras
 wc -c [archivo]  # Número de caracteres
