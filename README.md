@@ -1,14 +1,26 @@
-# LinuxBasics
+<div align="center">
 
-Esta es una recopilación de los comandos básicos para tener dominio sobre la terminal. En este repositorio, encontrarás tres archivos principales: `Terminal_Fundaments.md`, `Terminal_Control.md` y `Terminal_Utilites.md`.
+# RedHat Linux Learning
 
-### [Terminal_Fundaments.md](Terminal_Fundaments.md)
-Cubre los fundamentos de la terminal, incluyendo los comandos básicos y cómo utilizarlos. Este archivo es un excelente punto de partida si eres nuevo en la terminal o necesitas un repaso de los conceptos básicos.
 
-### [Terminal_Control.md](Terminal_Control.md)  
-Va un paso más allá y cubre cómo controlar la terminal para realizar tareas más avanzadas. Este archivo es ideal si ya tienes una comprensión básica de la terminal y estás listo para llevar tus habilidades al siguiente nivel.
+<a href="https://postimg.cc/14KdYq2y">
+  <img src="https://i.postimg.cc/FstQzbxk/imagen-2024-03-07-211141241.png" alt="imagen-2024-03-07-211141241" width="500"/>
+</a>
 
-### [Terminal_Utilites.md](Terminal_Utilites.md)
-Proporciona una visión general de las utilidades de la terminal que pueden ayudarte a mejorar tu eficiencia y productividad al trabajar en la terminal.
+**A compilation of fundamental RedHat commands in a coporate environment**
+
+![Static Badge](https://img.shields.io/badge/First_Module-Fundaments%20of%20RedHat-red)
+![Static Badge](https://img.shields.io/badge/Second_Module-Control%20of%20Users-green)
+![Static Badge](https://img.shields.io/badge/Third_Module-Servers%20management-25c2a0)
+
+
+</div>
+
+> [!NOTE]
+> 
+> **Here will be the description of the general repository**
+>
+
+### []()
 
 Juntos, estos archivos te proporcionarán una comprensión sólida de cómo trabajar eficientemente en la terminal.
