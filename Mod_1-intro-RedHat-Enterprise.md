@@ -66,5 +66,30 @@ Es un sistema operativo instalable que se construye apartir de un kernel de linu
 
 - En 1991, Linus Torvalds desarrollo un kernel similar a UNIX al que llamo Linux
 
+-El kernel de linux se complementa con otro software de código abierto, incluyendo utilidades y programas del Proyecto GNU, una interfaz grafia del MIT
+
+- Tambien incluye un servidor de correo llamada sendemail y el servidor web HTTP
+
 > [!NOTE]
 > El kernel es el nucleo del sistema operativo y administra el hardware, la memoria y la programación de los programas en ejecución.
+
+### `Caracteristicas de las distribuciones de Linux`
+
+- Las distribuciones consisten en un kernel de Linux y soportan programas de espacio de usuario.
+
+- Las distribuciones pueden ser pequeñas y de un solo propósito, o pueden incluir miles de programas de código abierto.
+
+- Las distribuciones proporcionan un medio para instalar y actualizar el software y sus componentes.
+
+-   El proveedor de distribución da soporte al software e, idealmente, participa en la comunidad de desarrollo. 
+
+## ¿Quién es Red Hat?
+Es el provedor mundial de soluciones de software de código abierto, mediante el uso de enfoque impulsado por la comunidad para tecnologias confiables y de alto rendimiento en la nube, Linux, middleware, almacenamiento y virtualización.
+
+> [!NOTE]
+> Middleware es un software que conecta aplicaciones o componentes en una red distribuida. Facilita la comunicación entre sistemas que no están diseñados para conectarse directamente 
+
+- Cumplen el papel de conectar a losclientes con la comunidad de código abierto
+
+- Es conocido por su participación en la comunidad Linux y la distribución de Red Hat Enterprise Linux.
+- Participa activamente en proyectos de comido abierto como lo son middleware, tecnologais de la nube como OpenStack y OpenShift, y los proyectos de almacenamiento basados en software Ceph y Gluste
