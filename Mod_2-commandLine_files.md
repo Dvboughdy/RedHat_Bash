@@ -10,7 +10,7 @@
 ## 1. `La Bash Shell`
 La línea de comandos de Linux, proporcionada por un programa llamado shell, permite ingresar instrucciones a un sistema informático. Red Hat recomienda usar el shell predeterminado, el GNU Bourne-Again Shell `(bash)`, para la administración del sistema.
 
-Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, muestra un indicador de shell cuando espera la entrada del usuario.
+Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, muestra un indicador de `shell` cuando espera la entrada del usuario.
 
 - El indicador cambia de un carácter de dólar `($)`
 ```sh
@@ -28,7 +28,7 @@ Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, mues
 > 
 > - En macOS, el shell predeterminado cambió a zsh a partir de macOS 10.15 Catalina.
 
-### Estructura de un comando en la `shell`
+### 1.1. Estructura de un comando en la `shell`
 <div style="">
 <ol>
   <li style="color:#40e0d0;">El comando a ejecutar</li>
@@ -39,8 +39,8 @@ Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, mues
 </ol>
 </div>
 
-## 2. `Iniciar sesión en un sistema local`
-## 3. `Iniciar sesión en un sistema remoto`
+### 1.2.`Iniciar sesión en un sistema local`
+### 1.3. `Iniciar sesión en un sistema remoto`
 
 # Capítulo 3: Administrar archivos desde la línea de comandos
 
