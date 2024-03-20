@@ -28,7 +28,7 @@ Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, mues
 > 
 > - En macOS, el shell predeterminado cambió a zsh a partir de macOS 10.15 Catalina.
 
-### 1.1. Estructura de un comando en la `shell`
+### 1.1. <u>`Estructura de un comando en la shell`</u>
 <div style="">
 <ol>
   <li style="color:#40e0d0;">El comando a ejecutar</li>
@@ -39,8 +39,51 @@ Bash, una versión mejorada del Bourne Shell original en los sistemas UNIX, mues
 </ol>
 </div>
 
-### 1.2.`Iniciar sesión en un sistema local`
+### 1.2. <u>`Iniciar sesión en un sistema local`</u>
+
+Una terminal proporciona una interfaz basada en texto para ingresar comandos y ver la salida en un sistema informático. Para ejecutar el shell, es necesario iniciar sesión en la computadora a través de una terminal.
+
+La consola física de una máquina Linux puede admitir múltiples consolas virtuales, cada una con su propia sesión de inicio de sesión independiente. Esto permite cambiar entre diferentes sesiones presionando **`Ctrl+Alt`** y una tecla de función **`(F1-F6)`**.
+
+En Red Hat Enterprise Linux 9, la pantalla de inicio de sesión gráfica se ejecuta en la primera consola virtual `(tty1)`, con cinco consolas de texto adicionales disponibles `(tty2 - tty6)`. El entorno gráfico comienza en la primera consola virtual no utilizada por una sesión de inicio de sesión.
+
+> [!NOTE]
+>
+> **Muchos administradores de sistemas optan por no ejecutar un entorno gráfico en sus servidores porque los usuarios no inician sesión en los servidores como un espacio de trabajo de escritorio.** La carga de trabajo de un servidor puede utilizar de forma más eficaz los importantes recursos que utiliza un entorno gráfico.
+
+Los servidores sin cabeza, que no tienen teclado ni pantalla conectados, pueden proporcionar un indicador de inicio de sesión a través de su consola serial. Esto es útil para acceder al servidor si la conexión de red convencional no está disponible.
+
+Sin embargo, en algunos casos se puede acceder a los servidores sin cabeza por otros medios a través de la red, por ejemplo, utilizando Virtual Network Computing (VNC) para ejecutar una interfaz gráfica en la máquina de destino.
+
 ### 1.3. `Iniciar sesión en un sistema remoto`
+
+Acceder a un sistema remoto en Linux es común para usuarios y administradores, especialmente en entornos con servidores sin cabeza o en la nube. **La forma más común de acceder es a través de "Secure Shell" `(SSH)`, que cifra la conexión para garantizar seguridad.**
+
+- **Ejemplo**
+  - En este ejemplo, un usuario con un indicador de shell en la máquina `host` usa `ssh` para iniciar sesión en el `host remoto` del sistema Linux remoto como usuario `usuarioremoto`:
+  ```sh
+  [user@host ~]$ ssh remoteuser@remotehost remoteuser@remotehost's password: password [remoteuser@remotehost ~]$
+  ```
+**SSH permite la autenticación mediante contraseña o mediante claves públicas, siendo esta última más segura.** Con claves públicas, los usuarios tienen un archivo de identidad con una clave privada que corresponde a una clave pública configurada en el servidor.
+
+- **Ejemplo**
+  - En el siguiente ejemplo, un usuario con un símbolo del shell en la máquina `host` inicia sesión en el `host remoto` como `usuario remoto` con `ssh`, utilizando el método de autenticación de clave pública. La opción `-i` del comando `ssh` se utiliza para especificar el archivo de clave privada del usuario, que es `mylab.pem`. La clave pública coincidente ya está configurada como clave autorizada en la cuenta del `usuario remoto`.
+  ```sh
+  [user@host ~]$ ssh -i mylab.pem remoteuser@remotehost 
+  The authenticity of host 'remotehost (192.0.2.42)' can't be established. ECDSA key fingerprint is 47:bf:82:cd:fa:68:06:ee:d8:83:03:1a:bb:29:14:a3. Are you sure you want to continue connecting (yes/no)? yes
+  [remoteuser@remotehost ~]$
+  ```
+
+
+> [!IMPORTANT]
+> 
+> **Al utilizar SSH por primera vez en un nuevo sistema, se emite una advertencia de autenticidad del host.** Si se acepta, la clave del host remoto se guarda para futuras conexiones, protegiendo contra ataques de interceptación.
+
+```sh 
+[user@host ~]$ ssh remoteuser@remotehost remoteuser@remotehost's password: password [remoteuser@remotehost ~]$
+```
+
+**La gestión de claves privadas y la configuración de `SSH` son tareas esenciales para la seguridad en la conexión remota**. Es fundamental comprender cómo funcionan y cómo configurarlas adecuadamente para mantener la integridad de la conexión.
 
 # Capítulo 3: Administrar archivos desde la línea de comandos
 
