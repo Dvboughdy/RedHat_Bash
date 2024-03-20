@@ -106,9 +106,9 @@ Es el provedor mundial de soluciones de software de código abierto, mediante el
 
 - **<u>Estabiliza</u>** el software de CentOS Stream para estar listo para el soporte a largo plazo y la estandarización, e lo integra en RHEL, la distribución lista para producción.
 
-<div align="center">
-    <img src="https://i.postimg.cc/sgJs4fYn/imagen-2024-03-20-155221670.png"/>
-</div>
+<p align="center">
+  <img src="https://i.postimg.cc/sgJs4fYn/imagen-2024-03-20-155221670.png" alt="Aquí va el texto del enlace">
+</p>
 
 
 ## 7. `Distribución de Fedora`
@@ -125,10 +125,10 @@ Fedora es un proyecto comunitario que produce y lanza un sistema operativo basad
 > ***"upstream"* se refiere a la dirección en la que fluyen los cambios y mejoras originales antes de ser integrados en otras versiones derivadas o modificadas del proyecto.** *En el caso de CentOS Stream como el upstream para RHEL, significa que CentOS Stream es donde se desarrollan y prueban las nuevas features y updates*
 > 
 ## 9. `Diferencias entre Fedora, CentOS Stream y RHEL`
-<div align="center">
-    <img src="https://i.postimg.cc/7YFjGFjK/imagen-2024-03-20-161801551.png"/>
-</div>
 
+<p align="center">
+  <img src="https://i.postimg.cc/7YFjGFjK/imagen-2024-03-20-161801551.png" alt="Aquí va el texto del enlace">
+</p>
 ## `Mas información adicional de RHEL`
 
 ### 6.1. <u>`RHEL for Edge`</u>
