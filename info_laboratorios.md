@@ -30,7 +30,7 @@
 - `Empezar` - verifica los recursos necesarios para iniciar un ejercicio. Puede incluir la configuración de opciones, la creación de recursos, la comprobación de los servicios de requisitos previos y la comprobación de los resultados necesarios de los ejercicios anteriores
 
     ```bash
-    start
+    [student@workstation ~]$ lab start cli-desktop
     ```
 
 - `grado` - la acción dirige el comando para evaluar el trabajo y muestra una lista de criterios de calificación con un estado, para cada uno. Para lograr un estado para todos los criterios, corrija los errores y vuelva a ejecutar la acción
@@ -38,5 +38,5 @@
 - `terminar` - limpia los recursos que se configuraron durante el ejercicio. Puedes hacer ejercicio tantas veces como quieras.
 
     ```bash
-    finish
+    [student@workstation ~]$ lab finish cli-desktop
     ```

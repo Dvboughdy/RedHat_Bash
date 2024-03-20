@@ -87,6 +87,30 @@ Acceder a un sistema remoto en Linux es común para usuarios y administradores, 
 
 **La gestión de claves privadas y la configuración de `SSH` son tareas esenciales para la seguridad en la conexión remota**. Es fundamental comprender cómo funcionan y cómo configurarlas adecuadamente para mantener la integridad de la conexión.
 
+
+## 2. `Practica de modificación de contraseña de usuario desde la shell`
+
+1. Inicia sesión en la estación de trabajo como `student` con la contraseña `"student"`. 
+
+2. Accede a la ``shell`` o `terminal` y cambia la contraseña del usuario `"student"` de `"student"` a `"55TurnK3y"`.
+```sh
+[student@workstation ~]$ passwd
+Changing password for user student.
+Current password: student
+New password: 55TurnK3y
+Retype new password: 55TurnK3y
+passwd: all authentication tokens updated successfully.
+```
+
+3. Cierra sesión **(Log out)** y vuelve a iniciarla como `student` con la nueva contraseña para verificar el cambio.
+
+4. Bloquea y desbloquea la pantalla para confirmar que el nuevo inicio de sesión funciona correctamente.
+
+5. Practica cómo apagar la estación de trabajo desde la interfaz con la opción gráfica en la opción `Power Off`, pero cancela la operación para no apagar el sistema.
+
+6. Ejecuta un script al final del ejercicio, **es decir finalizar el laboratorio**, para asegurarte de que la contraseña del usuario `"student"` se restablezca correctamente.
+
+
 # Capítulo 3: Administrar archivos desde la línea de comandos
 
 
