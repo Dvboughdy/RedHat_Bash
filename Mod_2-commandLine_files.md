@@ -61,6 +61,7 @@ Acceder a un sistema remoto en Linux es común para usuarios y administradores, 
 
 - **Ejemplo**
   - En este ejemplo, un usuario con un indicador de shell en la máquina `host` usa `ssh` para iniciar sesión en el `host remoto` del sistema Linux remoto como usuario `usuarioremoto`:
+
   ```sh
   [user@host ~]$ ssh remoteuser@remotehost remoteuser@remotehost's password: password [remoteuser@remotehost ~]$
   ```
@@ -68,6 +69,7 @@ Acceder a un sistema remoto en Linux es común para usuarios y administradores, 
 
 - **Ejemplo**
   - En el siguiente ejemplo, un usuario con un símbolo del shell en la máquina `host` inicia sesión en el `host remoto` como `usuario remoto` con `ssh`, utilizando el método de autenticación de clave pública. La opción `-i` del comando `ssh` se utiliza para especificar el archivo de clave privada del usuario, que es `mylab.pem`. La clave pública coincidente ya está configurada como clave autorizada en la cuenta del `usuario remoto`.
+
   ```sh
   [user@host ~]$ ssh -i mylab.pem remoteuser@remotehost 
   The authenticity of host 'remotehost (192.0.2.42)' can't be established. ECDSA key fingerprint is 47:bf:82:cd:fa:68:06:ee:d8:83:03:1a:bb:29:14:a3. Are you sure you want to continue connecting (yes/no)? yes
