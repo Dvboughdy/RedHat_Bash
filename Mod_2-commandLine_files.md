@@ -111,6 +111,43 @@ passwd: all authentication tokens updated successfully.
 6. Ejecuta un script al final del ejercicio, **es decir finalizar el laboratorio**, para asegurarte de que la contraseña del usuario `"student"` se restablezca correctamente.
 
 
+## 3. `Ejecutar Comandos con Bash Shell`
+En esta sección se abordaron varios comandos vistos en el curso previo de Linea de comandos
+- `whoami`: Muestra el nombre del usuario actual.
+
+- `date`: Muestra la fecha y hora actuales. 
+	- Se puede personalizar utilizando el argumento más (+) y especificando una cadena de formato como lo es la hora (`+%R`) o la fecha (`+%x`).
+- `passwd`: Permite cambiar la contraseña del usuario actual. Puede ser usado por el superusuario para cambiar la contraseña de otros usuarios.
+
+- `file`: Determina el tipo de un archivo escaneando su encabezado compilado.
+
+- `cat`: Muestra el contenido de archivos en la salida estándar. Se usa comúnmente para crear, ver o concatenar archivos.
+
+- `less`: Permite visualizar archivos de texto uno a la vez, facilitando la navegación en archivos largos.
+
+- `head`: Muestra las primeras líneas de un archivo. Por defecto, muestra las primeras 10 líneas.
+
+- `tail`: Muestra las últimas líneas de un archivo. Por defecto, muestra las últimas 10 líneas.
+	- Estos tambien permiten filtrar la cantidad de lineas que se deseen visualizar mediante el flag `-n num`
+
+- `wc`: Cuenta líneas, palabras y caracteres en un archivo. Puede ser usado con opciones como `-l` (líneas), `-w` (palabras) y `-c` (caracteres).
+
+- `Tabulación (Tab)`: Completa rápidamente comandos o nombres de archivos escribiendo suficiente para hacerlo único y luego presionando **Tab**.
+
+- `useradd`: Comando para crear usuarios en el sistema. Puede tener muchas opciones que pueden ser completadas usando la función de tabulación.
+
+- `Carácter de escape ()`: Permite escribir comandos en múltiples líneas para mejorar la legibilidad.
+
+- `history`: Muestra una lista de comandos ejecutados anteriormente. Puede ser usado junto con el signo de exclamación `(!)` para expandir comandos anteriores sin volver a escribirlos.
+
+- `Teclas de flecha y combinaciones de teclas`: Ayudan a navegar y editar comandos anteriores en el historial del shell, como las teclas de flecha para navegar y `Esc +` . o `Alt +` . para insertar la última palabra del comando anterior.
+
+### 3.1. `Atajos útiles de edición de línea de comandos`
+
+<p align="center">
+  <img src="https://i.postimg.cc/Zq3jC8ts/Screenshot-2024-03-22-220209.png" alt="Aquí va el texto del enlace">
+</p>
+
 # Capítulo 3: Administrar archivos desde la línea de comandos
 
 
